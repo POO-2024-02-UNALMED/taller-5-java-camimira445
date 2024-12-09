@@ -1,9 +1,9 @@
 package zooAnimales;
 
-import java.util.ArrayList;
+import gestion.Zona;
 
-public abstract class Animal {
-    private static int totalAnimales = 0;
+public class Animal {
+    public static int totalAnimales = 0;
     private String nombre;
     private int edad;
     private String habitat;
@@ -22,23 +22,12 @@ public abstract class Animal {
         return "desplazarse";
     }
 
-    public static int getTotalAnimales() {
+    public static int totalPorTipo() {
         return totalAnimales;
     }
 
-    public abstract String totalPorTipo();
-
     @Override
     public String toString() {
-        String ubicacion = (zona != null && zona.zoo != null) ? 
-            "la zona en la que me ubico es " + zona.nombre + ", en el " + zona.zoo.getNombre() :
-            "no tengo zona asignada";
-        return "Mi nombre es " + nombre + ", tengo una edad de " + edad + 
-               ", habito en " + habitat + " y mi género es " + genero + ", " + ubicacion + ".";
+        return "Mi nombre es " + nombre + ", tengo " + edad + " años, y vivo en " + habitat;
     }
 }
-
-
-
-
-

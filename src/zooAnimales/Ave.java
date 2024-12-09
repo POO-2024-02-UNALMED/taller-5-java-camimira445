@@ -1,19 +1,28 @@
 package zooAnimales;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ave extends Animal {
+    public static List<Ave> listado = new ArrayList<>();
+    public static int halcones = 0;
+    public static int aguilas = 0;
     private String colorPlumas;
-    private static ArrayList<Ave> aves = new ArrayList<>();
 
     public Ave(String nombre, int edad, String habitat, String genero, String colorPlumas) {
         super(nombre, edad, habitat, genero);
         this.colorPlumas = colorPlumas;
-        aves.add(this);
+        listado.add(this);
     }
 
-    public static int cantidadAves() {
-        return aves.size();
+    public static Ave crearHalcon() {
+        halcones++;
+        return new Ave("Halcón", 0, "montañas", "M", "café");
+    }
+
+    public static Ave crearAguila() {
+        aguilas++;
+        return new Ave("Águila", 0, "montañas", "M", "blanco y amarillo");
     }
 
     @Override
@@ -21,13 +30,11 @@ public class Ave extends Animal {
         return "volar";
     }
 
-    public static Ave crearHalcon(String nombre, int edad, String genero) {
-        return new Ave(nombre, edad, "montañas", genero, "café glorioso");
-    }
-
-    public static Ave crearAguila(String nombre, int edad, String genero) {
-        return new Ave(nombre, edad, "montañas", genero, "blanco y amarillo");
+    public static int cantidadAves() {
+        return listado.size();
     }
 }
+
+
 
 

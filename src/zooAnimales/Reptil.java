@@ -1,21 +1,30 @@
 package zooAnimales;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Reptil extends Animal {
+    public static List<Reptil> listado = new ArrayList<>();
+    public static int iguanas = 0;
+    public static int serpientes = 0;
     private String colorEscamas;
-    private boolean venenoso;
-    private static ArrayList<Reptil> reptiles = new ArrayList<>();
+    private int largoCola;
 
-    public Reptil(String nombre, int edad, String habitat, String genero, String colorEscamas, boolean venenoso) {
+    public Reptil(String nombre, int edad, String habitat, String genero, String colorEscamas, int largoCola) {
         super(nombre, edad, habitat, genero);
         this.colorEscamas = colorEscamas;
-        this.venenoso = venenoso;
-        reptiles.add(this);
+        this.largoCola = largoCola;
+        listado.add(this);
     }
 
-    public static int cantidadReptiles() {
-        return reptiles.size();
+    public static Reptil crearIguana() {
+        iguanas++;
+        return new Reptil("Iguana", 0, "humedal", "M", "verde", 3);
+    }
+
+    public static Reptil crearSerpiente() {
+        serpientes++;
+        return new Reptil("Serpiente", 0, "jungla", "M", "negro", 2);
     }
 
     @Override
@@ -23,14 +32,7 @@ public class Reptil extends Animal {
         return "reptar";
     }
 
-    public static Reptil crearIguana(String nombre, int edad, String genero) {
-        return new Reptil(nombre, edad, "humedal", genero, "verde", false);
-    }
-
-    public static Reptil crearSerpiente(String nombre, int edad, String genero) {
-        return new Reptil(nombre, edad, "jungla", genero, "blanco y amarillo", true);
+    public static int cantidadReptiles() {
+        return listado.size();
     }
 }
-
-
-
